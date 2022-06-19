@@ -26,7 +26,8 @@ function add() {
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
     && JSON_ESCAPED=$(printf '%s' "$JSON" | sed -e 's/[]\/$*.^[]/\\&/g') \
-    && sed -i "s/$MARKER/$JSON_ESCAPED,\n\t\t\t$MARKER/g" "$MEMEX"
+    && sed -i "s/$MARKER/$JSON_ESCAPED,\n\t\t\t$MARKER/g" "$MEMEX" \
+    && git commit -a -m "$FILE - $TITLE"
 }
 
 function edit() {
@@ -38,7 +39,8 @@ function edit() {
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
     && JSON_ESCAPED=$(printf '%s' "$JSON" | sed -e 's/[]\/$*.^[]/\\&/g') \
-    && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$JSON_ESCAPED,/g" "$MEMEX"
+    && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$JSON_ESCAPED,/g" "$MEMEX" \
+    && git commit -a -m "Fixup! $FILE - $TITLE"
 }
 
 if [ "${1-}" == "" ]; then
