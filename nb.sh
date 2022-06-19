@@ -27,7 +27,8 @@ function add() {
     && echo "$JSON" | jq \
     && JSON_ESCAPED=$(printf '%s' "$JSON" | sed -e 's/[]\/$*.^[]/\\&/g') \
     && sed -i "s/$MARKER/$JSON_ESCAPED,\n\t\t\t$MARKER/g" "$MEMEX" \
-    && git commit -a -m "$FILE - $TITLE"
+    && git add . \
+    && git commit -m "$FILE - $TITLE"
 }
 
 function edit() {
@@ -40,7 +41,8 @@ function edit() {
     && echo "$JSON" | jq \
     && JSON_ESCAPED=$(printf '%s' "$JSON" | sed -e 's/[]\/$*.^[]/\\&/g') \
     && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$JSON_ESCAPED,/g" "$MEMEX" \
-    && git commit -a -m "Fixup! $(basename $FILE) - $TITLE"
+    && git add . \
+    && git commit -m "Fixup! $(basename $FILE) - $TITLE"
 }
 
 if [ "${1-}" == "" ]; then
