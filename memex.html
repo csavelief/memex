@@ -112,7 +112,7 @@
 			{"date":"2022-06-20 01:47","title":"Ouvrir un port du firewall UFW","text":"<pre>\nufw allow from my_ip to any port my_port\nufw reload\n</pre>\n","file":"20220620-014737.html"},
 			{"date":"2022-06-20 01:49","title":"Fermer un port du firewall UFW","text":"<pre>\nufw status numbered\nufw delete my_number\nufw reload\n</pre>\n","file":"20220620-014925.html"},
 			{"date":"2022-06-20 01:50","title":"Copier un fichier vers un serveur distant par SSH","text":"<pre>\nsshpass -p 'my_password' scp /my/source/file my_username@my_ip:/my/destination\n</pre>\n","file":"20220620-015029.html"},
-			{"date":"2022-06-20 02:03","title":"Fusionner des CSV possédant la même structure","text":"<pre>\nhead -n 1 any_file.csv > new_file.csv {date: '', title: '', text: '', file: ''}{date: '', title: '', text: '', file: ''} tail -n+2 -q *.csv >> new_file.csv\n</pre>\n","file":"20220620-020332.html"},
+			{"date":"2022-06-20 02:15","title":"Fusionner des CSV possédant la même structure","text":"<pre>\nhead -n 1 any_file.csv > new_file.csv && tail -n+2 -q *.csv >> new_file.csv\n</pre>\n","file":"/opt/git/memex/20220620-020332.html"},
 			{date: '', title: '', text: '', file: ''}
 		];
 		

@@ -17,6 +17,11 @@ readonly MEMEX="/opt/git/memex/memex.html"
 readonly MARKER="{date: '', title: '', text: '', file: ''}"
 readonly DATE=$(date '+%Y-%m-%d %H:%M')
 
+function quoteSubst() {
+  IFS= read -d '' -r < <(sed -e ':a' -e '$!{N;ba' -e '}' -e 's/[&/\]/\\&/g; s/\n/\\&/g' <<<"$1")
+  printf %s "${REPLY%$'\n'}"
+}
+
 function add() {
 
   local FILE="$(date '+%Y%m%d-%H%M%S').html"
@@ -25,7 +30,7 @@ function add() {
   nano -w "$FILE" \
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
-    && JSON_ESCAPED=$(printf '%s' "$JSON" | sed -e 's/[&/\]/\\&/g') \
+    && JSON_ESCAPED=$(quoteSubst "$JSON") \
     && sed -i "s/$MARKER/$JSON_ESCAPED,\n\t\t\t$MARKER/g" "$MEMEX" \
     && git add . \
     && git commit -m "$FILE - $TITLE"
@@ -39,7 +44,7 @@ function edit() {
   nano -w "$FILE" \
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
-    && JSON_ESCAPED=$(printf '%s' "$JSON" | sed -e 's/[&/\]/\\&/g') \
+    && JSON_ESCAPED=$(quoteSubst "$JSON") \
     && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$JSON_ESCAPED,/g" "$MEMEX" \
     && git add . \
     && git commit -m "Fixup! $(basename $FILE) - $TITLE"
