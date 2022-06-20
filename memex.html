@@ -119,6 +119,7 @@
 			{"date":"2022-06-20 02:39","title":"Changer l'encodage d'un fichier de ISO-8859-1 en UTF-8","text":"<pre>\niconv -f ISO-8859-1 my_file.csv -t UTF-8 -o my_file_utf8.csv\n</pre>\n","file":"20220620-023944.html"},
 			{"date":"2022-06-20 02:40","title":"Changer l'encodage d'un fichier de ISO-8859-1 en UTF8-SIG","text":"<pre>\necho -ne '\\xEF\\xBB\\xBF' > my_new_file.csv\niconv -f ISO-8859-1 -t UTF-8 my_file.csv >> my_new_file.csv\n</pre>\n","file":"20220620-024048.html"},
 			{"date":"2022-06-20 02:41","title":"Transformer un fichier jsonl en csv","text":"<pre>\nin2csv -f ndjson -I my_file.jsonl > my_file.csv\n</pre>\n","file":"20220620-024125.html"},
+			{"date":"2022-06-20 02:41","title":"Supprimer la 1ère ligne d'un fichier","text":"<pre>\nsed -i '1d' my_file.csv\n</pre>\n","file":"20220620-024152.html"},
 			{date: '', title: '', text: '', file: ''}
 		];
 		
