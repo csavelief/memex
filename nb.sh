@@ -30,8 +30,7 @@ function add() {
   nano -w "$FILE" \
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
-    && JSON_ESCAPED=$(quoteSubst "$JSON") \
-    && sed -i "s/$MARKER/$JSON_ESCAPED,\n\t\t\t$MARKER/g" "$MEMEX" \
+    && sed -i "s/$MARKER/$(quoteSubst $JSON),\n\t\t\t$MARKER/g" "$MEMEX" \
     && git add . \
     && git commit -m "$FILE - $TITLE"
 }
@@ -42,10 +41,9 @@ function edit() {
   local TITLE=$(cat "$MEMEX" | grep -oP "(?<=\"title\":\")(.*)(?=\",\"text\".*$(basename $FILE))")
 
   nano -w "$FILE" \
-    && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
+    && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$(basename $FILE)" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
-    && JSON_ESCAPED=$(quoteSubst "$JSON") \
-    && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$JSON_ESCAPED,/g" "$MEMEX" \
+    && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$(quoteSubst $JSON),/g" "$MEMEX" \
     && git add . \
     && git commit -m "Fixup! $(basename $FILE) - $TITLE"
 }
