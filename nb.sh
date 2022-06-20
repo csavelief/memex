@@ -42,7 +42,7 @@ function edit() {
   local TITLE=$(cat "$MEMEX" | grep -oP "(?<=\"title\":\")(.*)(?=\",\"text\".*$(basename $FILE))")
 
   nano -w "$FILE" \
-    && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$(basename $FILE)" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
+    && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$(basename $FILE)" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
     && JSON_ESCAPED=$(quoteSubst "$JSON") \
     && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$JSON_ESCAPED,/g" "$MEMEX" \
