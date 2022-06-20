@@ -116,6 +116,7 @@
 			{"date":"2022-06-20 02:31","title":"Sommer la taille des fichiers présents dans un répertoire","text":"<pre>du -ach</pre>\n","file":"20220620-023157.html"},
 			{"date":"2022-06-20 02:38","title":"Créer une table MySQL à partir d'un CSV","text":"<p>L'inférence des types se fait sur les 50k premières lignes.</p>\n<pre>\ncsvsql -i mysql -y 50000 my_file.csv > my_create_table.sql\n</pre>\n","file":"/opt/git/memex/20220620-023647.html"},
 			{"date":"2022-06-20 02:38","title":"Déterminer l'encodage d'un fichier","text":"<pre>file -i my_file.csv</pre>\n<p>ou</p>\n<pre>uchardet my_file.csv</pre>\n","file":"20220620-023851.html"},
+			{"date":"2022-06-20 02:39","title":"Changer l'encodage d'un fichier de ISO-8859-1 en UTF-8","text":"<pre>\niconv -f ISO-8859-1 my_file.csv -t UTF-8 -o my_file_utf8.csv\n</pre>\n","file":"20220620-023944.html"},
 			{date: '', title: '', text: '', file: ''}
 		];
 		
