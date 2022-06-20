@@ -64,7 +64,7 @@ function edit() {
 if [ "${1-}" == "" ]; then
   edit
 elif [[ "$1" =~ ^[0-9]{8}-[0-9]{6}\.html$ ]]; then
-  echo "OK"
+  edit "$1"
 else
   add "$1"
 fi
