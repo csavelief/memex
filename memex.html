@@ -121,6 +121,7 @@
 			{"date":"2022-06-20 02:41","title":"Transformer un fichier jsonl en csv","text":"<pre>\nin2csv -f ndjson -I my_file.jsonl > my_file.csv\n</pre>\n","file":"20220620-024125.html"},
 			{"date":"2022-06-20 02:41","title":"Supprimer la 1ère ligne d'un fichier","text":"<pre>\nsed -i '1d' my_file.csv\n</pre>\n","file":"20220620-024152.html"},
 			{"date":"2022-06-20 02:42","title":"Concaténer des fichiers .jsonl.gz","text":"<pre>\nfind /my/source/directory -type f -name '*.jsonl.gz' | while read line; do cat \"$line\" >> \"new_file.jsonl.gz\" ; done\n</pre>\n","file":"20220620-024239.html"},
+			{"date":"2022-06-20 02:44","title":"Trouver les deux derniers fichiers modifiés dans un répertoire","text":"<pre>ls -t /my_directory | head -2</pre>\n","file":"20220620-024408.html"},
 			{date: '', title: '', text: '', file: ''}
 		];
 		
