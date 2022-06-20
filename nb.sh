@@ -42,7 +42,14 @@ function add() {
 
 function edit() {
 
-  local FILE=$(ls -t /opt/git/memex/*-*.html | head -1)
+  local FILE
+
+  if [ "${1-}" == "" ]; then
+    FILE=$(ls -t /opt/git/memex/*-*.html | head -1)
+  else
+    FILE="/opt/git/memex/$1"
+  fi
+
   local TITLE=$(cat "$MEMEX" | grep -oP "(?<=\"title\":\")(.*)(?=\",\"text\".*$(basename $FILE))")
 
   nano -w "$FILE" \
@@ -56,6 +63,8 @@ function edit() {
 
 if [ "${1-}" == "" ]; then
   edit
+elif [[ "$1" =~ ^[0-9]{8}-[0-9]{6}\.html$ ]]; then
+  echo "OK"
 else
   add "$1"
 fi
