@@ -128,6 +128,7 @@
 			{"date":"2022-06-20 02:46","title":"Afficher la liste des 20 plus gros fichiers","text":"<pre>\ndu -ahx / | sort -rh | head -20\n</pre>\n","file":"20220620-024627.html"},
 			{"date":"2022-06-20 02:47","title":"Supprimer les fichiers vieux de plus de X jours","text":"<pre>\nfind /path/to/files/ -type f -mtime +30 -exec rm -rf {} \\+\n</pre>\n","file":"20220620-024734.html"},
 			{"date":"2022-06-20 02:48","title":"Surveiller les 20 dernières lignes d'un fichier de logs","text":"<pre>\nwatch tail -n 20 /path/to/file\n</pre>\n","file":"20220620-024807.html"},
+			{"date":"2022-06-20 02:49","title":"Check on which filesystem a directory or file is","text":"<pre>\ndf -T /path/to/file\n</pre>\n","file":"20220620-024909.html"},
 			{date: '', title: '', text: '', file: ''}
 		];
 		
