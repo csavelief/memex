@@ -30,7 +30,7 @@ function add() {
   nano -w "$FILE" \
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$FILE" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
-    && sed -i "s/$MARKER/$(quoteSubst $JSON),\n\t\t\t$MARKER/g" "$MEMEX" \
+    && sed -i "s/$MARKER/$(quoteSubst \"$JSON\"),\n\t\t\t$MARKER/g" "$MEMEX" \
     && git add . \
     && git commit -m "$FILE - $TITLE"
 }
