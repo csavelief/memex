@@ -43,7 +43,7 @@ function edit() {
   nano -w "$FILE" \
     && JSON=$(jq -n -c --null-input --arg date "$DATE" --arg title "$TITLE" --rawfile text "$FILE" --arg file "$(basename $FILE)" '{"date":$date,"title":$title,"text":$text,"file":$file}') \
     && echo "$JSON" | jq \
-    && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$(quoteSubst $JSON),/g" "$MEMEX" \
+    && sed -i "s/^.*$(basename $FILE).*$/\t\t\t$(quoteSubst \"$JSON\"),/g" "$MEMEX" \
     && git add . \
     && git commit -m "Fixup! $(basename $FILE) - $TITLE"
 }
