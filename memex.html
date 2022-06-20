@@ -134,6 +134,7 @@
 			{"date":"2022-06-20 02:51","title":"TAR GZ files and directories","text":"<pre>\nfind /path/to/file -type f > files.txt && sudo tar -czf files.tar.gz -T files.txt\n</pre>\n","file":"20220620-025158.html"},
 			{"date":"2022-06-20 02:52","title":"Concate GZ files","text":"<pre>\nfind /path/to/file -type f -name '*.gz' -exec zcat {} \\+ > files.txt\n</pre>\n","file":"20220620-025231.html"},
 			{"date":"2022-06-20 02:52","title":"Sync two hierarchies of directories and files","text":"<pre>\nrsync -rvu /path/to/files_src /path/to/files_dest\n</pre>\n","file":"20220620-025257.html"},
+			{"date":"2022-06-20 02:53","title":"Gzipper un fichier","text":"<pre>\ngzip -c /path/to/file > /path/to/file.gz\n</pre>\n","file":"20220620-025332.html"},
 			{date: '', title: '', text: '', file: ''}
 		];
 		
