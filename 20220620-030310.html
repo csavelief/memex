@@ -1,0 +1,48 @@
+<p>What is an Actor?</p>
+<p>There are three axioms for actors written by Carl Hewitt. When an Actor receives a message, it can concurrenlty:</p>
+<ul>
+<li>Send messages to addresses of Actors that it has</li>
+<li>Create new Actors</li>
+<li>Designate how to handle the next message it receives</li>
+</ul>
+<p>Compact Explanation:</p>
+<ul>
+<li>“One actor is no actor”</li>
+<li>“Actors come always in groups, and collaborate through messaging. In the
+  reality, they have asynchronous behavior. This avoids blocking behavior on the
+  side of the caller. Actors can be executed in parallel, but the same actor
+  only once at the same time. This avoids corruption in state. They can hold
+  state and share their state over (im) mutable messages. Actors can be passive,
+  reactive or even proactive. They can change their behavior over time, often as
+  a result of the messages they receive”.</li>
+<li>“Actors avoids the need for expensive locking and potential deadlocks through
+  their asynchronous message passing, often realized over lock-free queues in a
+  concurrent environment”. Lock-free programming is a difficult job too. A
+  system of actors is in its nature independent of a global clock (no lock-step
+  computation).</li>
+</ul>
+<p>Papers:</p>
+<ul>
+<li><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Orleans-MSR-TR-2014-41.pdf">Virtual Actors</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2018/04/ICDE2018-Keynote.pdf">Actor-Oriented Database Systems</a></li>
+<li><a href="https://www.youtube.com/watch?v=7erJ1DV_Tlo">The Actor Model (everything you wanted to know, but were afraid to ask)</a></li>
+<li><a href="https://github.com/Horusiath/actor-design-notes">Design notes on actor frameworks</a></li>
+</ul>
+<p>Projects:</p>
+<ul>
+<li><a href="https://github.com/untu/comedy">https://github.com/untu/comedy</a></li>
+<li><a href="https://github.com/idokutela/Jack">https://github.com/idokutela/Jack</a></li>
+<li><a href="https://github.com/zakgof/actr">https://github.com/zakgof/actr</a></li>
+<li><a href="https://actor4j.io/introduction/#why-actor4j">https://actor4j.io/introduction/#why-actor4j</a></li>
+<li><a href="https://akka.io/">https://akka.io/</a></li>
+<li><a href="https://dotnet.github.io/orleans/">https://dotnet.github.io/orleans/</a></li>
+<li><a href="https://dapr.io/">https://dapr.io/</a></li>
+<li><a href="https://github.com/orbit/orbit/">https://github.com/orbit/orbit/</a></li>
+<li><a href="https://docs.dapr.io/">https://docs.dapr.io/</a></li>
+</ul>
+<p>Code:</p>
+<ul>
+<li><a href="https://github.com/fpinjava/fpinjava/tree/5514ee0b88dea88e7a2bdfe5feba467c80428993/fpinjava-parent/fpinjava-common/src/main/java/com/fpinjava/actors">https://github.com/fpinjava/fpinjava/tree/5514ee0b88dea88e7a2bdfe5feba467c80428993/fpinjava-parent/fpinjava-common/src/main/java/com/fpinjava/actors</a></li>
+<li><a href="https://bartoszsypytkowski.com/build-your-own-actor-model/">https://bartoszsypytkowski.com/build-your-own-actor-model/</a></li>
+<li><a href="https://robertodip.com/blog/get-to-know-the-actor-model/">https://robertodip.com/blog/get-to-know-the-actor-model/</a></li>
+</ul>
